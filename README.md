@@ -20,13 +20,13 @@ The primary objective of this project is to architect and deploy a fully functio
 ### 🖥️ Host System (Physical)
 A high-performance workstation ensures stable virtualization and smooth telemetry processing.
 
-
 | Component | Specification |
 | :--- | :--- |
 | CPU | Intel Core i9-12900K (16 Cores / 24 Threads) |
 | Memory | 128 GB DDR5 RAM |
 | Storage | 4 TB NVMe SSD |
 | Hypervisor | Oracle VirtualBox |
+<img width="1218" height="315" alt="VM List" src="https://github.com/user-attachments/assets/18e7c533-33e3-4c5d-a9c3-4b1050aac63b" />
 
 ### 🛠️ Virtual Machine Roles & Specifications
 The lab environment consists of three primary nodes within an isolated virtual network.
@@ -69,6 +69,16 @@ To maintain a secure and functional environment, the following networking rules 
 *   **Endpoint Security**  
     The other two VMs are fully isolated from the internet and only communicate within the internal network.
 
+### 🧪 Connectivity Validation
+To verify the integrity of the segmented network, I conducted cross-node connectivity tests between the attack node, the victim, and the SIEM.
+
+
+| Test Direction | Connectivity Proof |
+| :--- | :--- |
+| **Kali ➔ Windows 11** | <img src="https://github.com/user-attachments/assets/5d69e3bf-dea3-4861-b8fe-51b1851f37c8" width="450"> |
+| **Windows 11 ➔ Kali** | <img src="https://github.com/user-attachments/assets/6bc3c3e5-844b-4119-8c33-ece57b0ac501" width="450"> |
+| **Windows 11 ➔ SIEM** | <img src="https://github.com/user-attachments/assets/3ad9f0bf-cc30-43f9-a182-44284fe13a65" width="450"> |
+
 ---
 
 ## 🚀 Telemetry & Data Pipeline
@@ -84,6 +94,16 @@ To achieve deep visibility into system events, I implemented a dual-layered tele
 *   **SwiftOnSecurity Configuration**  
     Applied a customized version of the sysmonconfig-expert.xml to reduce noise and focus on high-fidelity security events.
 
+#### ✅ Endpoint Verification
+
+| Test Step | Visual Proof |
+| :--- | :--- |
+| **Sysmon Installation** | <img src="https://github.com/user-attachments/assets/519b518f-dd1b-49ac-bfb4-bc743d2751fb" width="500"> |
+| **Functionality Check** | <img src="https://github.com/user-attachments/assets/7bdadd94-ab9c-475a-80c7-0474662da9a0" width="500"> |
+| **Event Log Example**   | <img src="https://github.com/user-attachments/assets/3eaf4dd2-d095-49c9-abce-cf6bed47db94" width="500"> |
+
+---
+
 ### 📦 Data Ingestion
 The movement of data from the source to the analyst console is handled by the following components:
 
@@ -92,3 +112,9 @@ The movement of data from the source to the analyst console is handled by the fo
 *   **Network Monitoring**  
     Configured the virtual network adapters to ensure the Security Onion instance could capture and inspect traffic across the virtual segment.
 
+#### ✅ Pipeline Verification
+
+
+| System Status | Visual Proof |
+| :--- | :--- |
+| **Fleet Management Console** | <img src="https://github.com/user-attachments/assets/713c4a3c-7ecc-4ade-87d7-a9d389686939" width="600"><br><em>Confirmation of healthy status for Windows 11, Security Onion, and Fleet Server nodes.</em> |
