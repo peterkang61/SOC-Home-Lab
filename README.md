@@ -118,3 +118,23 @@ The movement of data from the source to the analyst console is handled by the fo
 | System Status | Visual Proof |
 | :--- | :--- |
 | **Fleet Management Console** | <img src="https://github.com/user-attachments/assets/713c4a3c-7ecc-4ade-87d7-a9d389686939" width="600"><br><em>Confirmation of healthy status for Windows 11, Security Onion, and Fleet Server nodes.</em> |
+
+---
+
+## 📚 References & Resources
+The following resources and documentation were instrumental in the design, deployment, and configuration of this SOC home lab environment.
+
+*   **Security Onion Documentation**  
+    [Official Documentation](https://docs.securityonion.net)
+*   **Sysmon (Microsoft Sysinternals)**  
+    [Tool Documentation and Download](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
+*   **Elastic Agent & Fleet**  
+    [Installation and Configuration Guide](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html)
+*   **Windows 11 Enterprise Evaluation**  
+    [Microsoft Evaluation Center](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-11-enterprise)
+*   **Kali Linux**  
+    [Official Virtual Machine Images](https://www.kali.org/get-kali/#kali-virtual-machines)
+*   **Oracle VirtualBox**  
+    [Hypervisor Download Page](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html)
+*   **SwiftOnSecurity Sysmon Config**  
+    [Expert Configuration XML Repository](https://github.com/SwiftOnSecurity/sysmon-config)
