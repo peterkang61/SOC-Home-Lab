@@ -68,3 +68,27 @@ To maintain a secure and functional environment, the following networking rules 
     The second adapter allows the host machine to access the SIEM management console.
 *   **Endpoint Security**  
     The other two VMs are fully isolated from the internet and only communicate within the internal network.
+
+---
+
+## 🚀 Telemetry & Data Pipeline
+The core of this lab is the automated collection and analysis of security events. This pipeline ensures that activity on the endpoint is captured and forwarded to the central monitoring stack.
+
+<img width="450" height="764" alt="SOC Lab Pipeline" src="https://github.com/user-attachments/assets/1d7a19a0-e897-439b-8cbe-5bc71dbf947a" />
+
+### 🔍 Endpoint Visibility
+To achieve deep visibility into system events, I implemented a dual-layered telemetry approach:
+
+*   **Sysmon (System Monitor)**  
+    Installed on Windows 11 to provide granular logging of process creations, network connections, and changes to file creation times.
+*   **SwiftOnSecurity Configuration**  
+    Applied a customized version of the sysmonconfig-expert.xml to reduce noise and focus on high-fidelity security events.
+
+### 📦 Data Ingestion
+The movement of data from the source to the analyst console is handled by the following components:
+
+*   **Elastic Agent**  
+    Deployed on the Windows 11 workstation to facilitate the secure transfer of logs and telemetry to the Security Onion management node.
+*   **Network Monitoring**  
+    Configured the virtual network adapters to ensure the Security Onion instance could capture and inspect traffic across the virtual segment.
+
