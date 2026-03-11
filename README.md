@@ -13,20 +13,58 @@ The primary objective of this project is to architect and deploy a fully functio
 *   **🕵️ Traffic Inspection**: Deep packet inspection and signature-based detection via the Security Onion stack.
 *   **⚔️ Adversary Simulation**: Integrated **Kali Linux** node for controlled attack simulations.
 
-## Host Computer & VM Specs
+---
 
-Four total machines if we include the host machine.
+## 💻 Infrastructure & Virtual Assets
 
-Host Machine:
-CPU: i9-12900K 16 Cores
-Mem:  128 GB
-Drive:  4 TB SSD
-Hypervisor:  Oracle Virtual Box
+### 🖥️ Host System (Physical)
+A high-performance workstation ensures stable virtualization and smooth telemetry processing.
 
-<img width="627" height="174" alt="VM Spec Table" src="https://github.com/user-attachments/assets/92cbf5d5-7888-4198-ade0-8b572d2ff84f" />
 
-Security Onion - Acts as the central nervous system for the lab, providing comprehensive visibility through its integrated stack (Elasticsearch, Logstash, Kibana, Suricata, and Zeek).
+| Component | Specification |
+| :--- | :--- |
+| CPU | Intel Core i9-12900K (16 Cores / 24 Threads) |
+| Memory | 128 GB DDR5 RAM |
+| Storage | 4 TB NVMe SSD |
+| Hypervisor | Oracle VirtualBox |
 
-Windows 11 – A fully patched Windows 11 endpoint configured to simulate a typical enterprise workstation. It generates system telemetry using Sysmon, which is forwarded to the SIEM for security monitoring and analysis.
+### 🛠️ Virtual Machine Roles & Specifications
+The lab environment consists of three primary nodes within an isolated virtual network.
 
-Kali Linux (Security Testing) - A dedicated platform for future offensive security testing and network auditing.
+<img width="627" height="174" alt="VM Spec Table" src="https://github.com/user-attachments/assets/797d5dc9-cee9-447a-9985-b17e25da90ad" />
+
+> **Security Onion (SIEM/IDS)**
+> Acts as the central nervous system for the lab, providing comprehensive visibility through its integrated stack (Elasticsearch, Logstash, Kibana, Suricata, and Zeek).
+
+> **Windows 11 (Endpoint)**
+> A fully patched Windows 11 endpoint configured to simulate a typical enterprise workstation. It generates system telemetry using Sysmon, which is forwarded to the SIEM for security monitoring and analysis.
+
+> **Kali Linux (Security Testing)**
+> A dedicated platform for future offensive security testing and network auditing.
+
+---
+
+## 🏗️ Architecture & Design
+The lab is built using a virtualized architecture to ensure isolation from the primary host network while maintaining high performance for security tools.
+<img width="903" height="626" alt="SOC Home Network Diagram" src="https://github.com/user-attachments/assets/0b409c4e-03e5-42c3-ba87-f00b6b6c91de" />
+
+*   **Virtualization Platform**: Oracle VirtualBox
+*   **Network Topology**: A segmented virtual network was established to facilitate secure communication between the victim endpoints and the central monitoring stack.
+
+### 🌐 Network Configuration Details
+To maintain a secure and functional environment, the following networking rules were implemented:
+
+*   **Infrastructure Isolation**  
+    Hosted all VMs inside a dedicated virtual network to maintain isolation.
+*   **Subnet Management**  
+    Used VirtualBox’s default gateway (10.0.2.2/24) and kept all VMs within the same subnet.
+*   **Static IP Addressing**  
+    Manually assigned static IP addresses to all nodes to ensure persistent log forwarding and stable communication between agents.    
+*   **Internal Communication**  
+    Assigned Adapter 1 on each VM to the NAT Network for internal communication.
+*   **SIEM Connectivity**  
+    Configured the SIEM VM with a second network adapter connected to the internet.
+*   **Management Access**  
+    The second adapter allows the host machine to access the SIEM management console.
+*   **Endpoint Security**  
+    The other two VMs are fully isolated from the internet and only communicate within the internal network.
