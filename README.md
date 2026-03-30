@@ -61,7 +61,7 @@ To maintain a secure and functional environment, the following networking rules 
 *   **Static IP Addressing**  
     Manually assigned static IP addresses to all nodes to ensure persistent log forwarding and stable communication between agents.    
 *   **Internal Communication**  
-    Assigned Adapter 1 on each VM to the NAT Network for internal communication.
+    Assigned Adapter 1 on each VM to the Internal Network for internal communication.
 *   **SIEM Connectivity**  
     Configured the SIEM VM with a second network adapter connected to the internet.
 *   **Management Access**  
