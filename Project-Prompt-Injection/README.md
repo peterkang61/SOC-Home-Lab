@@ -18,7 +18,7 @@ In order to simulate a modern attack surface, I deployed a lightweight Python-ba
   <img src="https://github.com/user-attachments/assets/e0941b28-4089-4a2f-b609-a57a96e75305" width="700" alt="Python Source Code">
   <br>
   <img src="https://github.com/user-attachments/assets/74ca6203-317e-4cda-81a0-001efda8cedb" width="700" alt="Active Flask Server">
-</p>>
+</p>
 
 * **Purpose:** This script was adapted from open-source documentation to serve as a vulnerable endpoint for the prompt injection simulation. This aided in viewing the telemetry of the prompt injection and offered better visibility into the full attack cycle.
 * **Configuration:** The basic AI chatbot was set up on **Port 5000** to mimic a web-integrated LLM interface. In the script, there is a "system prompt" which contains a **"Secret Key"** to determine if the hack was successful.
