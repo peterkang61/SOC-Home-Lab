@@ -8,12 +8,14 @@ This project simulates a real-world Prompt Injection attack against a locally ho
 
 ---
 
-## 1.1 Connectivity Verification
+## Section 1: Environment Setup & Detection Engineering
+
+### 1.1 Connectivity Verification
 The first step was to ensure the integrity of my SOC Home Lab. I verified that the Windows VM and Security Onion were actively communicating.
 * **Status:** Confirmed the SIEM was running in a healthy state and Elastic showed all systems as healthy.
 * **Validation:** Confirmed Sysmon logs were successfully being indexed and visible when using the **Hunt** interface.
 
-## 1.2 Target Environment Setup
+### 1.2 Target Environment Setup
 In order to simulate a modern attack surface, I deployed a lightweight Python-based AI chatbot on the Windows VM.
 
 <p align="center">
@@ -25,7 +27,7 @@ In order to simulate a modern attack surface, I deployed a lightweight Python-ba
 * **Purpose:** This script was adapted from open-source documentation to serve as a vulnerable endpoint for the prompt injection simulation. This aided in viewing the telemetry of the prompt injection and offered better visibility into the full attack cycle.
 * **Configuration:** The basic AI chatbot was set up on **Port 5000** to mimic a web-integrated LLM interface. In the script, there is a "system prompt" which contains a **"Secret Key"** to determine if the hack was successful.
 
-## 1.3 Custom Detection Engineering (Suricata)
+### 1.3 Custom Detection Engineering (Suricata)
 I integrated a custom detection signature into the Suricata IDS engine. While the core engine handles the automated collection of network metadata (IP headers, timestamps, and flow data), I developed the specific rule logic required to inspect the `http_client_body`. 
 
 <p align="center">
