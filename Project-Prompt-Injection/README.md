@@ -90,3 +90,13 @@ To understand the direct impact on the victim host, I analyzed the **Windows Eve
 * **Correlation:** The timestamps of the Suricata network alert perfectly match the process activity on the Windows host. 
 * **Conclusion:** This confirms the network-level injection was successfully processed by the application, providing the "Ground Truth" for the data leak.
 
+---
+
+## Section 4: Remediation & Recommendations
+
+To mitigate the risk of Prompt Injection and unauthorized data exfiltration, the following security controls are recommended for the AI Chatbot environment:
+
+* **Input Validation:** Implement strict **"Sanitization"** on the application side to strip out or block keywords like "ignore," "system override," or "instruction" before the prompt is processed by the LLM.
+* **Output Filtering:** Deploy a secondary **"Guardrail"** or "Moderation" layer. This independent check inspects the AI's response for sensitive strings (like the "Secret Key") or PII before it is returned to the user.
+* **Network Segmentation:** Restrict access to the AI Bot's listening port (**5000**) using host-based firewalls or VPC Security Groups. Only authorized internal IP addresses should be permitted to communicate with the service, effectively neutralizing external `curl` attacks.
+* **Least Privilege:** Ensure the service account running the Python application has minimal permissions on the Windows host, preventing an attacker from pivoting if they achieve execution through the bot.
