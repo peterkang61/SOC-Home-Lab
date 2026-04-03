@@ -49,8 +49,13 @@ The goal of this phase was to test the detection capabilities of the SIEM. I exe
 ```
 
 ---
+
 ### 2.2 Result: Successful Prompt Injection
 As shown in the Kali machine output, the prompt injection was successful and returned the **"SECRET_TERMINAL_77"** key after processing the malicious instructions. 
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e0877a26-6246-4f8d-b5ee-d49a3f9d8316" width="700" alt="Kali Linux Curl Attack Success">
+</p>
 
 * **Finding:** This confirms that the chatbot was vulnerable to **insecure output handling** and **direct prompt injection**.
 * **Impact:** Unauthorized access to sensitive system keys was achieved, providing the necessary evidence for the forensic analysis phase.
